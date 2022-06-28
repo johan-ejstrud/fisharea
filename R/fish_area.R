@@ -1,3 +1,5 @@
+sf::sf_use_s2(FALSE)
+
 extdata_dir <- file.path("inst", "extdata")
 ices_file <- file.path(extdata_dir, "ICES_ecoregions_20171207_erase_ESRI.shp")
 ices_areas <- sf::st_read(ices_file)

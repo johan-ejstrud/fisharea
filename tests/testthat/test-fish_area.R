@@ -24,7 +24,6 @@ test_that("identify fish areas", {
   expect_equal(fish_area(p), p$expect)
 })
 
-
 test_that("list is converted to vector", {
   x <- list("a", character(0), "b", NA)
 

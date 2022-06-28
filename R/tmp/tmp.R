@@ -21,7 +21,26 @@ p <-
   ) %>%
   sf::st_as_sf(coords = c("lat", "lng"), crs = sf::st_crs(ices_areas))
 
+p <-
+  tidyr::crossing(lat = seq(-40, 70, length.out = 10),
+                  lng = seq(30, 90, length.out = 10)) %>%
+  sf::st_as_sf(coords = c("lat", "lng"), crs = sf::st_crs(ices_areas))
+
 ggplot(ices_areas) +
   geom_sf() +
-   geom_sf_label(aes(label = Ecoregion)) +
-    geom_sf(data = p, color="red")
+  geom_sf_label(aes(label = Ecoregion)) +
+  geom_sf(data = p, color="red")
+
+
+p <-
+  tidyr::crossing(lat = seq(-40, 70, length.out = 10),
+                  lng = seq(30, 90, length.out = 10))
+
+fish_area(p)
+
+
+p <- dplyr::tribble(~lng, ~lat,
+                    65.3, -39.3,
+                    40.0,  -9.5)
+p$area <- fish_area(p)
+p
