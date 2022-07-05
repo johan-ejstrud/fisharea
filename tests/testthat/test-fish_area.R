@@ -1,6 +1,6 @@
 test_that("identify fish areas", {
   p <-
-    dplyr::tribble(~lng, ~lat, ~expect,
+    dplyr::tribble(~lat, ~lng, ~expect,
                    65.3, -39.3, "Greenland Sea",
                    40.0,  -9.5, "Bay of Biscay and the Iberian Coast",
                    38.2, -27.2, "Azores",
@@ -25,9 +25,8 @@ test_that("identify fish areas", {
 })
 
 test_that("list is converted to vector", {
-  x <- list("a", character(0), "b", NA)
+  input <- list("a", character(0), "b", NA)
+  expect <-   c("a", NA, "b", NA)
 
-  expect_equal(list_to_vector_convert_na(x),
-               c("a", NA, "b", NA))
-
+  expect_equal(list_to_vector_convert_na(input), expect)
 })

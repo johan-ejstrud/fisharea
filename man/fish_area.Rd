@@ -4,10 +4,14 @@
 \alias{fish_area}
 \title{Locate point in Fishery administration areas}
 \usage{
-fish_area(x)
+fish_area(x, lng_col = "lng", lat_col = "lat")
 }
 \arguments{
-\item{x}{Data frame with columns 'lat' and 'long'.}
+\item{x}{Data frame with columns 'lng' and 'lat'.}
+
+\item{lng_col}{Name of longitude column in data frame.}
+
+\item{lat_col}{Name of latitude column in data frame.}
 }
 \description{
 Locate point in Fishery administration areas
