@@ -41,7 +41,7 @@ https://github.com/johan-ejstrud/fisharea
 ## Versioning
 
 When a new version is ready
-1. Run `devtools::check().
+1. Run `devtools::check()`.
 1. Run `usethis::use_version("patch/minor/major")`.
 1. Update `NEWS.md` and commit.
 1. Run `./tag_release.sh`.

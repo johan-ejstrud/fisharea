@@ -6,3 +6,4 @@ fi
 
 git tag "v`grep Version DESCRIPTION | cut -d' ' -f2`"
 git push --tags
+git push
