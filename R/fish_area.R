@@ -1,8 +1,9 @@
 shape_files <-
-  dplyr::tribble(~id, ~filename, ~region_names,
-                 "ICES Ecoregions", "ICES_ecoregions_20171207_erase_ESRI.shp", "Ecoregion",
-                 "ICES Statistical subrectangles", "ICES_SubStatrec_20150113_3857.shp", "ICESNAME",
-                 "ICES Statistical rectangles", "ICES_Statistical_Rectangles_Eco.shp", "ICESNAME"
+  dplyr::tribble(~id, ~filename, ~region_col,
+                 "ICES areas", "ICES_Areas_20160601_cut_dense_3857.shp", "Area_27",
+                 "ICES statistical subrectangles", "ICES_SubStatrec_20150113_3857.shp", "ICESNAME",
+                 "ICES statistical rectangles", "ICES_Statistical_Rectangles_Eco.shp", "ICESNAME",
+                 "ICES ecoregions", "ICES_ecoregions_20171207_erase_ESRI.shp", "Ecoregion"
                  )
 
 #' Convert list to vector and replace character(0) with NAs.
@@ -14,41 +15,55 @@ list_to_vector_convert_na <- function(l) {
     unlist()
 }
 
-
-#' Locate point in Fishery administration areas
+#' @title Classify coordinates in fishery administration areas
+#' @description Find which fishery administration area a set of coordinates
+#' lies within to.
 #'
-#' @param x Data frame with columns 'lng' and 'lat'.
+#' @param x Data frame containing columns with coordinates.
 #' @param lng_col Name of longitude column in data frame.
 #' @param lat_col Name of latitude column in data frame.
-fish_area <- function(x, lng_col = "lng", lat_col = "lat") {
-  sf::sf_use_s2(FALSE) # Prevents invalid geometry error for ICES Ecoregions
+#' @param region Name of classification system to return names for. Possible
+#' values are "ICES areas", "ICES statistical subrectangles",
+#' "ICES statistical rectangles", and "ICES ecoregions".
+#' @export
+#' @examples
+#' p <- data.frame(lat = c(65.3, 40.0),
+#'                 lng = c(-39.3, -9.5))
+#' fisharea(p)
+#' #> [1] "14.b.2" "9.a"
+#'
+#' fisharea(p, region = "ICES statistical rectangles")
+#' #> [1] "59B0" "08E0"
+fisharea <- function(x, lng_col = "lng", lat_col = "lat",
+                      region = shape_files$id) {
+  sf::sf_use_s2(FALSE) # Prevents invalid geometry error
 
-  region <- "ICES Ecoregions"
+  region <- match.arg(region)
 
-  filename <-
+  shape_file <-
     shape_files %>%
     dplyr::filter(id == region) %>%
     dplyr::pull(filename)
 
-  region_name <-
+  region_col <-
     shape_files %>%
     dplyr::filter(id == region) %>%
-    dplyr::pull(region_names)
+    dplyr::pull(region_col)
 
-  # Catch error for no matching filename
-
-  areas <-
-    system.file("extdata", filename, package = "fisharea") %>%
-    sf::st_read()
+  regions <-
+    system.file("extdata", shape_file, package = "fisharea") %>%
+    sf::st_read() %>%
+    sf::st_transform(crs = 4326)
 
   points <-
     x %>%
     dplyr::select(dplyr::all_of(lng_col),
                   dplyr::all_of(lat_col)) %>%
-    sf::st_as_sf(coords = c(1, 2), crs = sf::st_crs(areas))
+    sf::st_as_sf(coords = c(1, 2), crs = sf::st_crs(regions))
 
-  within_matrix <- sf::st_within(points, areas, sparse = FALSE)
+  within_matrix <- sf::st_within(points, regions, sparse = FALSE)
 
-  lapply(1:nrow(points), function(i) areas[[region_name]][within_matrix[i,]]) %>%
+  # Extract vector of region names from 'within_matrix'
+  lapply(1:nrow(points), function(i) regions[[region_col]][within_matrix[i,]]) %>%
     list_to_vector_convert_na()
 }

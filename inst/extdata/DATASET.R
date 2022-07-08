@@ -1,3 +1,4 @@
+# Download and extract shape files
 library(tidyverse)
 library(sf)
 
@@ -14,3 +15,4 @@ download_and_unzip <- function(source) {
 download_and_unzip("http://gis.ices.dk/shapefiles/ICES_ecoregions.zip")
 download_and_unzip("http://gis.ices.dk/shapefiles/ICES_SubStatrec.zip")
 download_and_unzip("http://gis.ices.dk/shapefiles/ICES_rectangles.zip")
+download_and_unzip("http://gis.ices.dk/shapefiles/ICES_areas.zip")

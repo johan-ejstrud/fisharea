@@ -5,9 +5,9 @@
 
 The `fisharea` package classify which fishery administration areas a set of  coordinates lies within.
 
-The user can choose from a series of fishery administration areas. 
+The user can choose from a series of fishery administration areas. See `?fisharea::fisharea` for complete list.
 
-The package doesn't do anything miraculous. It's just combines the shape files for the fishery areas, and the logic for determining if a point is inside a rectangle, in one package. 
+The package doesn't do anything miraculous. It's just combines the shape files for the fishery areas, with the logic for determining if a point is inside a rectangle.
 
 
 ## Installation
@@ -21,9 +21,13 @@ devtools::install_github("johan-ejstrud/fisharea")
 ## Example
 ``` r
 library(fisharea)
-fish_area(data.frame(lat = c(65.3, 40.0), 
-                     lng = c(-39.3, -9.5)))
-#> [1] "Greenland Sea" "Bay of Biscay and the Iberian Coast"
+p <- data.frame(lat = c(65.3, 40.0), 
+                lng = c(-39.3, -9.5))
+fisharea(p)
+> [1] "14.b.2" "9.a"
+
+fisharea(p, region = "ICES statistical rectangles")
+> [1] "59B0" "08E0"
 ```
 
 ## GitHub page
