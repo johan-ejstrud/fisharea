@@ -1,7 +1,7 @@
 Package: fisharea
 Type: Package
 Title: Locate Points in Fishery Administration Areas
-Version: 0.1.0
+Version: 0.2.1
 Author: Johan Ejstrud
 Maintainer: Johan Ejstrud <johan@ejstrud.com>
 Description: Locate points in fishery adminstration areas.

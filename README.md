@@ -43,13 +43,8 @@ https://github.com/johan-ejstrud/fisharea
 When a new version is ready
 1. Run `devtools::check().
 1. Run `usethis::use_version("patch/minor/major")`.
-1. Update `NEWS.sh` and commit.
+1. Update `NEWS.md` and commit.
 1. Run `./tag_release.sh`.
-1. Open https://github.com/johan-ejstrud/buffersam/tags
+1. Open https://github.com/johan-ejstrud/fisharea/tags
 1. Click 'Create release'.
 1. Click 'Publish release'.
-  p <-
-    dplyr::tribble(~lat, ~lng, ~expect,
-                   65.3, -39.3, "Greenland Sea",
-                   40.0,  -9.5, "Bay of Biscay and the Iberian Coast",
-                   38.2, -27.2, "Azores",
