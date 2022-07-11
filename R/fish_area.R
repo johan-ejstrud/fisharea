@@ -15,6 +15,20 @@ list_to_vector_convert_na <- function(l) {
     unlist()
 }
 
+#' Get shape file for fishery administration areas
+#'
+#' @param region Name of classification system to return name for.
+fisharea_sf <- function(region = shape_files$id) {
+  region <- match.arg(region)
+
+  shape_files %>%
+    dplyr::filter(id == region) %>%
+    dplyr::pull(filename) %>%
+    system.file("extdata", ., package = "fisharea") %>%
+    sf::st_read() %>%
+    sf::st_transform(crs = 4326)
+}
+
 #' @title Classify coordinates in fishery administration areas
 #' @description Find which fishery administration area a set of coordinates
 #' lies within to.
@@ -40,20 +54,12 @@ fisharea <- function(x, lng_col = "lng", lat_col = "lat",
 
   region <- match.arg(region)
 
-  shape_file <-
-    shape_files %>%
-    dplyr::filter(id == region) %>%
-    dplyr::pull(filename)
+  regions <- fisharea_sf(region)
 
   region_col <-
     shape_files %>%
     dplyr::filter(id == region) %>%
     dplyr::pull(region_col)
-
-  regions <-
-    system.file("extdata", shape_file, package = "fisharea") %>%
-    sf::st_read() %>%
-    sf::st_transform(crs = 4326)
 
   points <-
     x %>%
