@@ -6,3 +6,6 @@
 .DS_Store
 rsconnect/*
 droptoken.rds
+inst/extdata/NAFO_Divisions_2021.gdb/*
+inst/extdata/*.pdf
+inst/extdata/*.csv

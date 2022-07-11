@@ -1,9 +1,10 @@
 shape_files <-
   dplyr::tribble(~id, ~filename, ~region_col,
                  "ICES areas", "ICES_Areas_20160601_cut_dense_3857.shp", "Area_27",
-                 "ICES statistical subrectangles", "ICES_SubStatrec_20150113_3857.shp", "ICESNAME",
                  "ICES statistical rectangles", "ICES_Statistical_Rectangles_Eco.shp", "ICESNAME",
-                 "ICES ecoregions", "ICES_ecoregions_20171207_erase_ESRI.shp", "Ecoregion"
+                 "ICES statistical subrectangles", "ICES_SubStatrec_20150113_3857.shp", "ICESNAME",
+                 "ICES ecoregions", "ICES_ecoregions_20171207_erase_ESRI.shp", "Ecoregion",
+                 "NAFO divisions", "NAFO_Divisions_SHP/NAFO_Divisions_2021_poly_clipped.shp", "Division"
                  )
 
 #' Convert list to vector and replace character(0) with NAs.
@@ -38,7 +39,7 @@ fisharea_sf <- function(region = shape_files$id) {
 #' @param lat_col Name of latitude column in data frame.
 #' @param region Name of classification system to return names for. Possible
 #' values are "ICES areas", "ICES statistical subrectangles",
-#' "ICES statistical rectangles", and "ICES ecoregions".
+#' "ICES statistical rectangles", "ICES ecoregions", and "NAFO divisions".
 #' @export
 #' @examples
 #' p <- data.frame(lat = c(65.3, 40.0),
@@ -53,7 +54,6 @@ fisharea <- function(x, lng_col = "lng", lat_col = "lat",
   sf::sf_use_s2(FALSE) # Prevents invalid geometry error
 
   region <- match.arg(region)
-
   regions <- fisharea_sf(region)
 
   region_col <-
@@ -68,6 +68,8 @@ fisharea <- function(x, lng_col = "lng", lat_col = "lat",
     sf::st_as_sf(coords = c(1, 2), crs = sf::st_crs(regions))
 
   within_matrix <- sf::st_within(points, regions, sparse = FALSE)
+
+  browser()
 
   # Extract vector of region names from 'within_matrix'
   lapply(1:nrow(points), function(i) regions[[region_col]][within_matrix[i,]]) %>%

@@ -15,7 +15,7 @@ fisharea(x, lng_col = "lng", lat_col = "lat", region = shape_files$id)
 
 \item{region}{Name of classification system to return names for. Possible
 values are "ICES areas", "ICES statistical subrectangles",
-"ICES statistical rectangles", and "ICES ecoregions".}
+"ICES statistical rectangles", "ICES ecoregions", and "NAFO divisions".}
 }
 \description{
 Find which fishery administration area a set of coordinates
