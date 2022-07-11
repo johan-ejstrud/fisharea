@@ -1,3 +1,6 @@
+# fisharea 0.3.1
+* Remove debug command that was left unintentionally
+
 # fisharea 0.3.0
 * Add NAFO areas
 * Move reading of shapefiles to seperate function
