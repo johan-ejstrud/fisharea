@@ -69,8 +69,6 @@ fisharea <- function(x, lng_col = "lng", lat_col = "lat",
 
   within_matrix <- sf::st_within(points, regions, sparse = FALSE)
 
-  browser()
-
   # Extract vector of region names from 'within_matrix'
   lapply(1:nrow(points), function(i) regions[[region_col]][within_matrix[i,]]) %>%
     list_to_vector_convert_na()
