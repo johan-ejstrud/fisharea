@@ -1,3 +1,6 @@
+# fisharea 0.5.0
+* Add function 'fisharea_sf()' to get shapefiles
+
 # fisharea 0.4.0
 * Change 'lng' to 'lon'
 
