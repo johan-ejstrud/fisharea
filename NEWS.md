@@ -1,3 +1,6 @@
+# fisharea 0.4.0
+* Change 'lng' to 'lon'
+
 # fisharea 0.3.1
 * Remove debug command that was left unintentionally
 
