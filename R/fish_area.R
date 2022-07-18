@@ -35,7 +35,7 @@ fisharea_sf <- function(region = shape_files$id) {
 #' lies within to.
 #'
 #' @param x Data frame containing columns with coordinates.
-#' @param lng_col Name of longitude column in data frame.
+#' @param lon_col Name of longitude column in data frame.
 #' @param lat_col Name of latitude column in data frame.
 #' @param region Name of classification system to return names for. Possible
 #' values are "ICES areas", "ICES statistical subrectangles",
@@ -43,13 +43,13 @@ fisharea_sf <- function(region = shape_files$id) {
 #' @export
 #' @examples
 #' p <- data.frame(lat = c(65.3, 40.0),
-#'                 lng = c(-39.3, -9.5))
+#'                 lon = c(-39.3, -9.5))
 #' fisharea(p)
 #' #> [1] "14.b.2" "9.a"
 #'
 #' fisharea(p, region = "ICES statistical rectangles")
 #' #> [1] "59B0" "08E0"
-fisharea <- function(x, lng_col = "lng", lat_col = "lat",
+fisharea <- function(x, lon_col = "lon", lat_col = "lat",
                       region = shape_files$id) {
   sf::sf_use_s2(FALSE) # Prevents invalid geometry error
 
@@ -63,7 +63,7 @@ fisharea <- function(x, lng_col = "lng", lat_col = "lat",
 
   points <-
     x %>%
-    dplyr::select(dplyr::all_of(lng_col),
+    dplyr::select(dplyr::all_of(lon_col),
                   dplyr::all_of(lat_col)) %>%
     sf::st_as_sf(coords = c(1, 2), crs = sf::st_crs(regions))
 

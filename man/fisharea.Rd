@@ -4,12 +4,12 @@
 \alias{fisharea}
 \title{Classify coordinates in fishery administration areas}
 \usage{
-fisharea(x, lng_col = "lng", lat_col = "lat", region = shape_files$id)
+fisharea(x, lon_col = "lon", lat_col = "lat", region = shape_files$id)
 }
 \arguments{
 \item{x}{Data frame containing columns with coordinates.}
 
-\item{lng_col}{Name of longitude column in data frame.}
+\item{lon_col}{Name of longitude column in data frame.}
 
 \item{lat_col}{Name of latitude column in data frame.}
 
@@ -23,7 +23,7 @@ lies within to.
 }
 \examples{
 p <- data.frame(lat = c(65.3, 40.0),
-                lng = c(-39.3, -9.5))
+                lon = c(-39.3, -9.5))
 fisharea(p)
 #> [1] "14.b.2" "9.a"
 

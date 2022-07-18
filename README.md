@@ -22,7 +22,7 @@ devtools::install_github("johan-ejstrud/fisharea")
 ``` r
 library(fisharea)
 p <- data.frame(lat = c(65.3, 40.0), 
-                lng = c(-39.3, -9.5))
+                lon = c(-39.3, -9.5))
 fisharea(p)
 > [1] "14.b.2" "9.a"
 
