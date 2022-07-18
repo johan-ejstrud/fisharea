@@ -27,3 +27,9 @@ test_that("list is converted to vector", {
 
   expect_equal(list_to_vector_convert_na(input), expect)
 })
+
+test_that("an sf object is returned", {
+  areas <- fisharea_sf("ICES areas")
+
+  expect_equal(class(areas), c("sf", "data.frame"))
+})

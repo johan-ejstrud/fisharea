@@ -2,4 +2,5 @@
 
 export("%>%")
 export(fisharea)
+export(fisharea_sf)
 importFrom(magrittr,"%>%")

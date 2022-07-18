@@ -7,8 +7,11 @@
 fisharea_sf(region = shape_files$id)
 }
 \arguments{
-\item{region}{Name of classification system to return name for.}
+\item{region}{Name of classification system to return sf object for.}
 }
 \description{
-Get shape file for fishery administration areas
+Returns an sf object with fishery administration areas.
+}
+\examples{
+ices_areas <- fisharea_sf("ICES areas")
 }
