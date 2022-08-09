@@ -1,3 +1,6 @@
+# fisharea 0.5.1
+* Clarify that coordinates are in decimal degrees
+
 # fisharea 0.5.0
 * Add function 'fisharea_sf()' to get shapefiles
 
