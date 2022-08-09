@@ -7,7 +7,7 @@
 fisharea(x, lon_col = "lon", lat_col = "lat", region = shape_files$id)
 }
 \arguments{
-\item{x}{Data frame containing columns with coordinates.}
+\item{x}{Data frame containing columns with coordinates in decimal degrees.}
 
 \item{lon_col}{Name of longitude column in data frame.}
 

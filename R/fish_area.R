@@ -38,7 +38,7 @@ fisharea_sf <- function(region = shape_files$id) {
 #' @description Find which fishery administration area a set of coordinates
 #' lies within to.
 #'
-#' @param x Data frame containing columns with coordinates.
+#' @param x Data frame containing columns with coordinates in decimal degrees.
 #' @param lon_col Name of longitude column in data frame.
 #' @param lat_col Name of latitude column in data frame.
 #' @param region Name of classification system to return names for. Possible
