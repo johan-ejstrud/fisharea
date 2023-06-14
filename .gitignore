@@ -9,3 +9,4 @@ droptoken.rds
 inst/extdata/NAFO_Divisions_2021.gdb/*
 inst/extdata/*.pdf
 inst/extdata/*.csv
+inst/extdata/fixpos_feltkode_point.*

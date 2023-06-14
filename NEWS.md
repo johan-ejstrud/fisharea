@@ -1,3 +1,6 @@
+# fisharea (development version)
+* Add 'fixpos' and 'fletkoder' as regions.
+
 # fisharea 0.5.1
 * Clarify that coordinates are in decimal degrees
 

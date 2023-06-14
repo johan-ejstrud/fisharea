@@ -4,7 +4,9 @@ shape_files <-
                  "ICES statistical rectangles", "ICES_Statistical_Rectangles_Eco.shp", "ICESNAME",
                  "ICES statistical subrectangles", "ICES_SubStatrec_20150113_3857.shp", "ICESNAME",
                  "ICES ecoregions", "ICES_ecoregions_20171207_erase_ESRI.shp", "Ecoregion",
-                 "NAFO divisions", "NAFO_Divisions_SHP/NAFO_Divisions_2021_poly_clipped.shp", "Division"
+                 "NAFO divisions", "NAFO_Divisions_SHP/NAFO_Divisions_2021_poly_clipped.shp", "Division",
+                 "Feltkode", "fixpos_feltkode_polygon.shp", "feltkode",
+                 "Fixpos", "fixpos_feltkode_polygon.shp", "fixpos"
                  )
 
 #' Convert list to vector and replace character(0) with NAs.
@@ -43,7 +45,8 @@ fisharea_sf <- function(region = shape_files$id) {
 #' @param lat_col Name of latitude column in data frame.
 #' @param region Name of classification system to return names for. Possible
 #' values are "ICES areas", "ICES statistical subrectangles",
-#' "ICES statistical rectangles", "ICES ecoregions", and "NAFO divisions".
+#' "ICES statistical rectangles", "ICES ecoregions", "NAFO divisions",
+#' "Feltkode" and "Fixpos".
 #' @export
 #' @examples
 #' p <- data.frame(lat = c(65.3, 40.0),
