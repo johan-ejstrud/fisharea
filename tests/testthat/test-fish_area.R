@@ -34,5 +34,5 @@ test_that("list is converted to vector", {
 test_that("an sf object is returned", {
   areas <- fisharea_sf("ICES areas")
 
-  expect_equal(class(areas), c("sf", "data.frame"))
+  expect_equal(class(areas), c("sf", "tbl_df", "tbl", "data.frame"))
 })

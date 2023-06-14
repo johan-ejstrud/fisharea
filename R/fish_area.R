@@ -32,7 +32,7 @@ fisharea_sf <- function(region = shape_files$id) {
     dplyr::filter(id == region) %>%
     dplyr::pull(filename) %>%
     system.file("extdata", ., package = "fisharea") %>%
-    sf::st_read() %>%
+    sf::read_sf() %>%
     sf::st_transform(crs = 4326)
 }
 
