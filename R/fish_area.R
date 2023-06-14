@@ -21,7 +21,7 @@ list_to_vector_convert_na <- function(l) {
 #' @title Get shape file for fishery administration areas
 #' @description Returns an sf object with fishery administration areas.
 #'
-#' @param region Name of classification system to return sf object for.
+#' @inheritParams fisharea
 #' @export
 #' @examples
 #' ices_areas <- fisharea_sf("ICES areas")

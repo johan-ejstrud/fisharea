@@ -7,7 +7,10 @@
 fisharea_sf(region = shape_files$id)
 }
 \arguments{
-\item{region}{Name of classification system to return sf object for.}
+\item{region}{Name of classification system to return names for. Possible
+values are "ICES areas", "ICES statistical subrectangles",
+"ICES statistical rectangles", "ICES ecoregions", "NAFO divisions",
+"Feltkode" and "Fixpos".}
 }
 \description{
 Returns an sf object with fishery administration areas.
