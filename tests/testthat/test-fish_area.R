@@ -1,6 +1,6 @@
 test_that("identify fish areas", {
   p <-
-    tibble::tribble(
+    dplyr::tribble(
                      ~lat,  ~lon,                       ~ices_ecoregion, ~ices_area, ~nafo_division,  ~feltkode,   ~fixpos,
                      65.3, -39.3,                       "Greenland Sea",   "14.b.2",             NA,    "JP075", "JP07509",
                        40,  -9.5, "Bay of Biscay and the Iberian Coast",      "9.a",             NA,         NA,        NA,
