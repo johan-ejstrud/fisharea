@@ -1,4 +1,8 @@
-# fisharea (development version)
+# fisharea 0.6.0
+* Remove dependencies on packages 'rgdal' and 'rgeos' which are no longer on 
+CRAN and weren't used anyway.
+
+# fisharea 0.5.2
 * Add 'fixpos' and 'fletkoder' as regions.
 * Silence message from st_read().
 

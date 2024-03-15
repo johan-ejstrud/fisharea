@@ -1,7 +1,7 @@
 Package: fisharea
 Type: Package
 Title: Locate Points in Fishery Administration Areas
-Version: 0.5.1.9002
+Version: 0.6.0
 Author: Johan Ejstrud
 Maintainer: Johan Ejstrud <johan@ejstrud.com>
 Description: Locate points in fishery adminstration areas.
@@ -13,8 +13,6 @@ Depends:
 Imports: 
     dplyr,
     magrittr,
-    rgdal,
-    rgeos,
     sf
 RoxygenNote: 7.2.3
 Suggests: 
